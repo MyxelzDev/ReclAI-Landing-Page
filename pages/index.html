@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ReclAI - Plataforma inteligente de gestión y estructuración de reclamos con IA Multimodal bajo normativa INDECOPI.">
+  <title>ReclAI | Transformamos tu frustración en soluciones rápidas</title>
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- Enlace de salto para accesibilidad por teclado -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Header / Navegación -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#inicio" class="brand" aria-label="Inicio ReclAI">
+        <span class="brand-icon" aria-hidden="true">✦</span>
+        <span class="brand-name">ReclAI</span>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false">
+        ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#workspace-demo">Demo Interactiva</a>
+        <a href="#consulta-rapida">Seguimiento</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn btn-outline btn-sm" id="quickRoleToggle" title="Cambiar entre vista Consumidor y Empresa">
+          Cambiar a Portal Empresa
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- SECCIÓN 1: HERO + BUSCADOR PREDICTIVO (Mockup 1 - HU-09, HU-10, HU-11) -->
+    <section id="inicio" class="hero-section">
+      <div class="container hero-container">
+        <span class="pill-badge">✦ IA Multimodal · Cero fricción</span>
+        <h1>Transformamos tu frustración en soluciones rápidas</h1>
+        <p class="hero-subtitle">
+          Cuéntanos qué pasó con una nota de voz, texto libre o una foto. Sin formularios rígidos ni lenguaje legal complicado.
+        </p>
+
+        <!-- Buscador Predictivo -->
+        <div class="search-card" role="search">
+          <label for="companySearchInput" class="sr-only">Buscar empresa para reclamar</label>
+          <div class="search-input-group">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input
+              type="text"
+              id="companySearchInput"
+              placeholder="Ingresa el nombre de la empresa (Ej. El Rey de la Papa)..."
+              autocomplete="off"
+              aria-describedby="searchHint"
+            >
+            <button type="button" class="btn btn-primary" id="searchBtn">Buscar</button>
+          </div>
+          <small id="searchHint" class="helper-text">Ingresa al menos 3 caracteres para filtrar empresas afiliadas.</small>
+
+          <!-- Resultados dinámicos -->
+          <div id="companyResults" class="company-results" aria-live="polite"></div>
+
+          <div class="unregistered-cta">
+            <span>¿No encuentras la empresa?</span>
+            <button type="button" class="link-btn" id="openUnregisteredModal">
+              Registra un reclamo a una empresa nueva +
+            </button>
+          </div>
+        </div>
+
+        <!-- Sellos de confianza -->
+        <div class="trust-bar">
+          <span>✔ Cumple normativa INDECOPI (Ley N° 29571)</span>
+          <span>⏱ Respuesta máx. 15 días hábiles</span>
+          <span>🔒 Datos protegidos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: WORKSPACE INTERACTIVO B2C / B2B (Mockups 2, 3, 4 y 5) -->
+    <section id="workspace-demo" class="workspace-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Plataforma Funcional ReclAI (Demo B2B2C)</h2>
+            <p>Prueba el flujo completo: registra un reclamo multimodal como cliente y gestiónalo con IA como empresa.</p>
+          </div>
+
+          <!-- Switcher de Portal (Fiel al botón inferior izquierdo del Mockup) -->
+          <div class="portal-switcher" role="tablist" aria-label="Selector de Portal">
+            <button type="button" role="tab" aria-selected="true" class="switch-tab active" data-portal="b2c" id="tabB2C">
+              👤 Portal Cliente (B2C)
+            </button>
+            <button type="button" role="tab" aria-selected="false" class="switch-tab" data-portal="b2b" id="tabB2B">
+              🏢 Portal Empresa (B2B)
+            </button>
+          </div>
+        </div>
+
+        <!-- ================= VISTA B2C: CONSUMIDOR ================= -->
+        <div id="portalB2C" class="portal-view active">
+          <div class="subnav-tabs">
+            <button type="button" class="subtab active" data-b2c-view="chat">💬 Nuevo Reclamo (Chatbot IA)</button>
+            <button type="button" class="subtab" data-b2c-view="mis-reclamos">📋 Mis Reclamos y Seguimiento</button>
+          </div>
+
+          <!-- B2C VIEW A: CHATBOT MULTIMODAL (Mockup 2 - HU-13, HU-14, HU-15, HU-16, HU-18, HU-20) -->
+          <div id="b2cChatView" class="app-window chat-layout">
+            <div class="app-topbar">
+              <div class="ticket-badge-group">
+                <strong id="activeDraftCode">#REC-2026-012</strong>
+                <button type="button" class="btn-icon" id="copyCodeBtn" aria-label="Copiar código de ticket" title="Copiar código">📋</button>
+                <span class="meta-tag" id="selectedCompanyLabel">Empresa: El Rey de la Papa S.A.C.</span>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline" id="resetChatBtn">Reiniciar chat</button>
+            </div>
+
+            <div class="chat-messages" id="chatMessages" aria-live="polite">
+              <!-- Mensajes generados por JS -->
+            </div>
+
+            <!-- Barra de grabación de voz simulada (Mockup 2) -->
+            <div class="voice-bar hidden" id="voiceRecordingBar">
+              <span class="rec-dot">● Grabando <span id="recTimer">0:04</span></span>
+              <span class="rec-wave" aria-hidden="true">ıllılılıllıılıllı</span>
+              <div class="voice-actions">
+                <button type="button" class="btn btn-sm btn-primary" id="sendVoiceBtn">Transcribir audio</button>
+                <button type="button" class="btn-icon" id="cancelVoiceBtn" aria-label="Cancelar grabación">✕</button>
+              </div>
+            </div>
+
+            <!-- Acciones rápidas multimodales -->
+            <div class="chat-quick-actions">
+              <button type="button" class="chip-btn" id="simulateOcrBtn">📎 Adjuntar Boleta (Demo OCR)</button>
+              <button type="button" class="chip-btn" id="openPrecloseBtn">✅ Revisar Precierre y Enviar</button>
+            </div>
+
+            <form class="chat-input-form" id="chatForm">
+              <label for="chatInput" class="sr-only">Escribe tu mensaje o reclamo</label>
+              <input type="text" id="chatInput" placeholder="Escribe tu mensaje o graba una nota de voz..." required>
+              <button type="button" class="btn-touch" id="toggleVoiceBtn" aria-label="Grabar nota de voz" title="Grabar nota de voz">🎤</button>
+              <button type="submit" class="btn btn-primary btn-touch" aria-label="Enviar mensaje">➤</button>
+            </form>
+          </div>
+
+          <!-- B2C VIEW B: MIS RECLAMOS (Mockup 3 - HU-25, HU-28, HU-36) -->
+          <div id="b2cMisReclamosView" class="app-window hidden">
+            <div class="app-topbar">
+              <div>
+                <h3>Mis Reclamos</h3>
+                <p class="text-muted">Sigue el estado de tus casos en tiempo real, sin términos legales complicados.</p>
+              </div>
+              <div class="filter-inline">
+                <label for="b2cSearchFilter" class="sr-only">Filtrar mis reclamos</label>
+                <input type="text" id="b2cSearchFilter" placeholder="Buscar por código o empresa...">
+              </div>
+            </div>
+
+            <!-- Línea de tiempo interactiva del ticket destacado (Mockup 3) -->
+            <div class="timeline-card" id="featuredTimelineCard">
+              <!-- Renderizado dinámico en JS -->
+            </div>
+
+            <!-- Lista de tickets del consumidor -->
+            <div id="b2cTicketList" class="ticket-cards-grid">
+              <!-- Renderizado dinámico en JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= VISTA B2B: GESTOR / AGENTE ================= -->
+        <div id="portalB2B" class="portal-view hidden">
+          <!-- B2B VIEW A: BANDEJA SEMAFORIZADA (Mockup 4 - HU-37, HU-41) -->
+          <div id="b2bInboxView" class="app-window">
+            <div class="app-topbar">
+              <div>
+                <h3>Bandeja de reclamos</h3>
+                <p class="text-muted">Priorizados por riesgo de vencimiento SLA — Plazo legal INDECOPI: 15 días hábiles</p>
+              </div>
+            </div>
+
+            <!-- KPIs Semaforizados (Mockup 4) -->
+            <div class="kpi-grid">
+              <div class="kpi-card kpi-red">
+                <span class="kpi-label">Críticos (≤ 3 días)</span>
+                <strong class="kpi-value" id="kpiCritical">0</strong>
+              </div>
+              <div class="kpi-card kpi-amber">
+                <span class="kpi-label">Por vencer (4–7 días)</span>
+                <strong class="kpi-value" id="kpiWarning">0</strong>
+              </div>
+              <div class="kpi-card kpi-green">
+                <span class="kpi-label">En plazo (≥ 8 días)</span>
+                <strong class="kpi-value" id="kpiSafe">0</strong>
+              </div>
+              <div class="kpi-card kpi-neutral">
+                <span class="kpi-label">Total abiertos</span>
+                <strong class="kpi-value" id="kpiTotal">0</strong>
+              </div>
+            </div>
+
+            <!-- Filtros Bandeja -->
+            <div class="inbox-filters">
+              <div class="filter-group">
+                <label for="b2bSearchInput" class="sr-only">Buscar por ID o cliente</label>
+                <input type="text" id="b2bSearchInput" placeholder="Buscar por ID, cliente...">
+              </div>
+              <div class="filter-group">
+                <label for="b2bRiskFilter">Riesgo SLA:</label>
+                <select id="b2bRiskFilter">
+                  <option value="all">Todos</option>
+                  <option value="critical">⚠ Críticos (≤ 3 días)</option>
+                  <option value="warning">⏳ Por vencer (4–7 días)</option>
+                  <option value="safe">✔ En plazo (≥ 8 días)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Tabla Bandeja B2B -->
+            <div class="table-responsive">
+              <table class="b2b-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Categoría (IA)</th>
+                    <th>Frustración (IA)</th>
+                    <th>SLA / Días restantes</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="b2bTableBody">
+                  <!-- Renderizado dinámico en JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- B2B VIEW B: FICHA DETALLADA DE 3 COLUMNAS (Mockup 5 - HU-23, HU-24, HU-38, HU-39, HU-40) -->
+          <div id="b2bDetailView" class="app-window hidden">
+            <div class="app-topbar">
+              <div class="detail-header-left">
+                <button type="button" class="btn btn-outline btn-sm" id="backToInboxBtn">← Bandeja</button>
+                <div>
+                  <h3 id="detailTicketTitle">Reclamo #REC-2026-001</h3>
+                  <small class="text-muted" id="detailTicketMeta">Valeria Quispe · Canal: Chat IA</small>
+                </div>
+              </div>
+              <div class="detail-badges" id="detailTopBadges"></div>
+            </div>
+
+            <div class="b2b-three-col">
+              <!-- Columna 1: Análisis IA -->
+              <div class="detail-col">
+                <div class="col-heading">
+                  <h4>✦ Análisis IA</h4>
+                  <span class="pill-tag">Generado por IA</span>
+                </div>
+
+                <div class="sub-card">
+                  <h5>RESUMEN OBJETIVO</h5>
+                  <ul class="summary-list" id="detailSummaryList"></ul>
+                </div>
+
+                <div class="sub-card">
+                  <h5>PRETENSIÓN DEL CLIENTE</h5>
+                  <span class="claim-badge" id="detailClaimType">Devolución de dinero</span>
+                </div>
+
+                <div class="sub-card">
+                  <h5>MONTO INVOLUCRADO</h5>
+                  <p class="amount-display" id="detailAmount">S/ 350.00</p>
+                  <small class="text-muted">Extraído automáticamente por OCR/NLP</small>
+                </div>
+
+                <div class="sub-card">
+                  <h5>CLASIFICACIÓN AUTOMÁTICA</h5>
+                  <div class="meta-row"><span>Categoría:</span><strong id="detailCategory">Logística - Entregas</strong></div>
+                  <div class="meta-row"><span>Sentimiento:</span><span id="detailSentimentBadge"></span></div>
+                  <div class="meta-row"><span>Confianza IA:</span><strong class="text-teal">94%</strong></div>
+                </div>
+              </div>
+
+              <!-- Columna 2: Evidencia e Historial -->
+              <div class="detail-col">
+                <div class="col-heading">
+                  <h4>📄 Evidencia e Historial</h4>
+                </div>
+
+                <button type="button" class="btn btn-outline full-width" id="viewOriginalChatBtn">
+                  Ver Chat Original
+                </button>
+
+                <div class="sub-card">
+                  <h5>EVIDENCIA ADJUNTA (OCR VALIDADO)</h5>
+                  <div class="receipt-preview">
+                    <strong id="receiptStore">EL REY DE LA PAPA S.A.C.</strong>
+                    <span>RUC 20512345678 · Boleta Electrónica</span>
+                    <hr>
+                    <div class="meta-row"><span>Detalle pedido:</span><span id="receiptItem">Combo + Envío</span></div>
+                    <div class="meta-row"><strong>TOTAL:</strong><strong id="receiptTotal">S/ 350.00</strong></div>
+                  </div>
+                </div>
+
+                <div class="sub-card">
+                  <h5>HISTORIAL DEL CASO</h5>
+                  <ul class="audit-timeline" id="detailHistoryList"></ul>
+                </div>
+              </div>
+
+              <!-- Columna 3: Asistente de Respuesta -->
+              <div class="detail-col">
+                <div class="col-heading">
+                  <h4>✦ Asistente de Respuesta</h4>
+                  <div class="tone-selector">
+                    <label for="responseToneSelect">Tono:</label>
+                    <select id="responseToneSelect">
+                      <option value="empatico">Empático</option>
+                      <option value="formal">Formal</option>
+                      <option value="legal">Técnico-Legal</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="draft-box">
+                  <div class="draft-header">
+                    <span class="text-teal">✦ Borrador generado por IA</span>
+                    <button type="button" class="link-btn" id="regenerateDraftBtn">↻ Regenerar</button>
+                  </div>
+                  <label for="aiDraftTextarea" class="sr-only">Editor de respuesta oficial</label>
+                  <textarea id="aiDraftTextarea" rows="11"></textarea>
+                </div>
+
+                <button type="button" class="btn btn-primary full-width btn-lg" id="sendOfficialResponseBtn">
+                  Enviar Respuesta Oficial y Cerrar Caso
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: CÓMO FUNCIONA (Arquitectura de Información 4.2) -->
+    <section id="como-funciona" class="info-section">
+      <div class="container">
+        <div class="section-center-header">
+          <h2>¿Cómo funciona ReclAI?</h2>
+          <p>Eliminamos la barrera entre la molestia del cliente y la operación de la empresa.</p>
+        </div>
+        <div class="steps-grid">
+          <article class="info-card">
+            <span class="step-num">1</span>
+            <h3>Expresión Natural</h3>
+            <p>El cliente relata su problema mediante audio, texto libre o foto de su comprobante sin llenar formularios largos.</p>
+          </article>
+          <article class="info-card">
+            <span class="step-num">2</span>
+            <h3>Estructuración con IA</h3>
+            <p>Nuestro motor multimodal transcribe, filtra la carga emocional y extrae hechos, pretensión y monto en segundos.</p>
+          </article>
+          <article class="info-card">
+            <span class="step-num">3</span>
+            <h3>Resolución y SLA Legal</h3>
+            <p>La empresa recibe el ticket semaforizado bajo el plazo de 15 días hábiles de INDECOPI con un borrador de respuesta empático.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: CONSULTA RÁPIDA PÚBLICA (HU-33) -->
+    <section id="consulta-rapida" class="tracking-section">
+      <div class="container tracking-box">
+        <div>
+          <h2>Consulta rápida de estado</h2>
+          <p>Ingresa tu código único de seguimiento (ej. <code>#REC-2026-001</code>) sin necesidad de iniciar sesión.</p>
+        </div>
+        <form class="tracking-form" id="publicTrackingForm">
+          <label for="publicTicketInput" class="sr-only">Código de seguimiento</label>
+          <input type="text" id="publicTicketInput" placeholder="#REC-2026-001" required>
+          <button type="submit" class="btn btn-primary">Consultar</button>
+        </form>
+        <div id="publicTrackingResult" class="tracking-result" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: PREGUNTAS FRECUENTES (Arquitectura 4.2) -->
+    <section id="faq" class="info-section">
+      <div class="container faq-container">
+        <div class="section-center-header">
+          <h2>Preguntas Frecuentes</h2>
+        </div>
+        <details class="faq-item">
+          <summary>¿Tiene validez legal frente al Libro de Reclamaciones?</summary>
+          <p>Sí. ReclAI estructura los datos obligatorios exigidos por el Código de Protección y Defensa del Consumidor (Ley N° 29571) y controla el plazo máximo de 15 días hábiles.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué pasa si la empresa aún no está afiliada a ReclAI?</summary>
+          <p>Puedes registrar tu reclamo igual. El sistema genera una notificación formal al canal de contacto de la empresa y guarda tu constancia con fecha y hora.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿La IA modifica lo que yo dije en mi reclamo?</summary>
+          <p>No. La IA genera un resumen ejecutivo para agilizar la atención del agente, pero siempre conserva tu mensaje original y tus evidencias adjuntas intactas.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER INSTITUCIONAL (Arquitectura 4.2) -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand">
+          <span class="brand-icon" aria-hidden="true">✦</span>
+          <span class="brand-name">ReclAI</span>
+        </div>
+        <p class="text-muted">Plataforma Inteligente de Transformación y Estructuración de Feedback de Usuario.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Nosotros</a>
+        <a href="#como-funciona">Soluciones</a>
+        <a href="#workspace-demo">Empresas</a>
+        <a href="#faq">Política de Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL GENÉRICO (Precierre, Constancia, Chat Original, Empresa No Registrada) -->
+  <div class="modal-backdrop hidden" id="appModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Título del Modal</h3>
+        <button type="button" class="btn-icon" id="closeModalBtn" aria-label="Cerrar ventana">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Toast de notificaciones (Retroalimentación inmediata al usuario) -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
