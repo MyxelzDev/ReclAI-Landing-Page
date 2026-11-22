@@ -36,7 +36,6 @@ body {
   line-height: 1.5;
 }
 
-/* Accesibilidad */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -75,7 +74,6 @@ body {
   padding: 0 1.25rem;
 }
 
-/* Botones y áreas táctiles mínimas de 44x44px (Sección 4.1.5) */
 .btn, .btn-touch, .btn-icon, .chip-btn, .switch-tab, .subtab {
   min-height: 44px;
   font-family: inherit;
@@ -146,7 +144,6 @@ body {
   padding: 0 0.25rem;
 }
 
-/* Navbar */
 .navbar {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -210,7 +207,6 @@ body {
   font-size: 1.25rem;
 }
 
-/* Hero & Buscador */
 .hero-section {
   padding: 3.5rem 0 2.5rem;
   text-align: center;
@@ -505,7 +501,6 @@ body {
   font-family: inherit;
 }
 
-/* Mis Reclamos & Timeline (Mockup 3) */
 .timeline-card {
   margin: 1.25rem;
   padding: 1.25rem;
@@ -646,7 +641,6 @@ body {
   background: var(--bg-main);
 }
 
-/* Badges accesibles (Color + Ícono + Texto - Sección 4.1.5) */
 .sla-badge {
   display: inline-flex;
   align-items: center;
@@ -675,7 +669,6 @@ body {
   border: 1px solid #a7f3d0;
 }
 
-/* B2B Ficha 3 Columnas (Mockup 5) */
 .b2b-three-col {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -798,7 +791,6 @@ body {
   outline: none;
 }
 
-/* Secciones Informativas & Tracking */
 .info-section {
   padding: 3.5rem 0;
 }
@@ -868,7 +860,6 @@ body {
   margin-top: 1rem;
 }
 
-/* FAQ */
 .faq-container {
   max-width: 780px;
 }
@@ -892,7 +883,6 @@ body {
   color: var(--text-muted);
 }
 
-/* Footer */
 .footer {
   background: var(--surface);
   border-top: 1px solid var(--border);
@@ -918,7 +908,6 @@ body {
   text-decoration: none;
 }
 
-/* Modal & Toast */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -965,7 +954,6 @@ body {
   box-shadow: var(--shadow);
 }
 
-/* Responsive: Tablet y Mobile (Sección 5.2 del Handbook) */
 @media (max-width: 960px) {
   .b2b-three-col {
     grid-template-columns: 1fr;

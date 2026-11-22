@@ -12,10 +12,8 @@
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <!-- Enlace de salto para accesibilidad por teclado -->
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-  <!-- Header / Navegación -->
   <header class="navbar">
     <div class="container nav-container">
       <a href="#inicio" class="brand" aria-label="Inicio ReclAI">
@@ -44,7 +42,6 @@
   </header>
 
   <main id="main-content">
-    <!-- SECCIÓN 1: HERO + BUSCADOR PREDICTIVO (Mockup 1 - HU-09, HU-10, HU-11) -->
     <section id="inicio" class="hero-section">
       <div class="container hero-container">
         <span class="pill-badge">✦ IA Multimodal · Cero fricción</span>
@@ -53,7 +50,6 @@
           Cuéntanos qué pasó con una nota de voz, texto libre o una foto. Sin formularios rígidos ni lenguaje legal complicado.
         </p>
 
-        <!-- Buscador Predictivo -->
         <div class="search-card" role="search">
           <label for="companySearchInput" class="sr-only">Buscar empresa para reclamar</label>
           <div class="search-input-group">
@@ -69,7 +65,6 @@
           </div>
           <small id="searchHint" class="helper-text">Ingresa al menos 3 caracteres para filtrar empresas afiliadas.</small>
 
-          <!-- Resultados dinámicos -->
           <div id="companyResults" class="company-results" aria-live="polite"></div>
 
           <div class="unregistered-cta">
@@ -80,7 +75,6 @@
           </div>
         </div>
 
-        <!-- Sellos de confianza -->
         <div class="trust-bar">
           <span>✔ Cumple normativa INDECOPI (Ley N° 29571)</span>
           <span>⏱ Respuesta máx. 15 días hábiles</span>
@@ -89,7 +83,6 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 2: WORKSPACE INTERACTIVO B2C / B2B (Mockups 2, 3, 4 y 5) -->
     <section id="workspace-demo" class="workspace-section">
       <div class="container">
         <div class="section-header">
@@ -98,7 +91,6 @@
             <p>Prueba el flujo completo: registra un reclamo multimodal como cliente y gestiónalo con IA como empresa.</p>
           </div>
 
-          <!-- Switcher de Portal (Fiel al botón inferior izquierdo del Mockup) -->
           <div class="portal-switcher" role="tablist" aria-label="Selector de Portal">
             <button type="button" role="tab" aria-selected="true" class="switch-tab active" data-portal="b2c" id="tabB2C">
               👤 Portal Cliente (B2C)
@@ -109,14 +101,12 @@
           </div>
         </div>
 
-        <!-- ================= VISTA B2C: CONSUMIDOR ================= -->
         <div id="portalB2C" class="portal-view active">
           <div class="subnav-tabs">
             <button type="button" class="subtab active" data-b2c-view="chat">💬 Nuevo Reclamo (Chatbot IA)</button>
             <button type="button" class="subtab" data-b2c-view="mis-reclamos">📋 Mis Reclamos y Seguimiento</button>
           </div>
 
-          <!-- B2C VIEW A: CHATBOT MULTIMODAL (Mockup 2 - HU-13, HU-14, HU-15, HU-16, HU-18, HU-20) -->
           <div id="b2cChatView" class="app-window chat-layout">
             <div class="app-topbar">
               <div class="ticket-badge-group">
@@ -128,10 +118,8 @@
             </div>
 
             <div class="chat-messages" id="chatMessages" aria-live="polite">
-              <!-- Mensajes generados por JS -->
             </div>
 
-            <!-- Barra de grabación de voz simulada (Mockup 2) -->
             <div class="voice-bar hidden" id="voiceRecordingBar">
               <span class="rec-dot">● Grabando <span id="recTimer">0:04</span></span>
               <span class="rec-wave" aria-hidden="true">ıllılılıllıılıllı</span>
@@ -141,7 +129,6 @@
               </div>
             </div>
 
-            <!-- Acciones rápidas multimodales -->
             <div class="chat-quick-actions">
               <button type="button" class="chip-btn" id="simulateOcrBtn">📎 Adjuntar Boleta (Demo OCR)</button>
               <button type="button" class="chip-btn" id="openPrecloseBtn">✅ Revisar Precierre y Enviar</button>
@@ -155,7 +142,6 @@
             </form>
           </div>
 
-          <!-- B2C VIEW B: MIS RECLAMOS (Mockup 3 - HU-25, HU-28, HU-36) -->
           <div id="b2cMisReclamosView" class="app-window hidden">
             <div class="app-topbar">
               <div>
@@ -168,21 +154,15 @@
               </div>
             </div>
 
-            <!-- Línea de tiempo interactiva del ticket destacado (Mockup 3) -->
             <div class="timeline-card" id="featuredTimelineCard">
-              <!-- Renderizado dinámico en JS -->
             </div>
 
-            <!-- Lista de tickets del consumidor -->
             <div id="b2cTicketList" class="ticket-cards-grid">
-              <!-- Renderizado dinámico en JS -->
             </div>
           </div>
         </div>
 
-        <!-- ================= VISTA B2B: GESTOR / AGENTE ================= -->
         <div id="portalB2B" class="portal-view hidden">
-          <!-- B2B VIEW A: BANDEJA SEMAFORIZADA (Mockup 4 - HU-37, HU-41) -->
           <div id="b2bInboxView" class="app-window">
             <div class="app-topbar">
               <div>
@@ -191,7 +171,6 @@
               </div>
             </div>
 
-            <!-- KPIs Semaforizados (Mockup 4) -->
             <div class="kpi-grid">
               <div class="kpi-card kpi-red">
                 <span class="kpi-label">Críticos (≤ 3 días)</span>
@@ -211,7 +190,6 @@
               </div>
             </div>
 
-            <!-- Filtros Bandeja -->
             <div class="inbox-filters">
               <div class="filter-group">
                 <label for="b2bSearchInput" class="sr-only">Buscar por ID o cliente</label>
@@ -228,7 +206,6 @@
               </div>
             </div>
 
-            <!-- Tabla Bandeja B2B -->
             <div class="table-responsive">
               <table class="b2b-table">
                 <thead>
@@ -243,13 +220,11 @@
                   </tr>
                 </thead>
                 <tbody id="b2bTableBody">
-                  <!-- Renderizado dinámico en JS -->
                 </tbody>
               </table>
             </div>
           </div>
 
-          <!-- B2B VIEW B: FICHA DETALLADA DE 3 COLUMNAS (Mockup 5 - HU-23, HU-24, HU-38, HU-39, HU-40) -->
           <div id="b2bDetailView" class="app-window hidden">
             <div class="app-topbar">
               <div class="detail-header-left">
@@ -294,7 +269,6 @@
                 </div>
               </div>
 
-              <!-- Columna 2: Evidencia e Historial -->
               <div class="detail-col">
                 <div class="col-heading">
                   <h4>📄 Evidencia e Historial</h4>
@@ -321,7 +295,6 @@
                 </div>
               </div>
 
-              <!-- Columna 3: Asistente de Respuesta -->
               <div class="detail-col">
                 <div class="col-heading">
                   <h4>✦ Asistente de Respuesta</h4>
@@ -354,7 +327,6 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 3: CÓMO FUNCIONA (Arquitectura de Información 4.2) -->
     <section id="como-funciona" class="info-section">
       <div class="container">
         <div class="section-center-header">
@@ -381,7 +353,6 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 4: CONSULTA RÁPIDA PÚBLICA (HU-33) -->
     <section id="consulta-rapida" class="tracking-section">
       <div class="container tracking-box">
         <div>
@@ -397,7 +368,6 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 5: PREGUNTAS FRECUENTES (Arquitectura 4.2) -->
     <section id="faq" class="info-section">
       <div class="container faq-container">
         <div class="section-center-header">
@@ -419,7 +389,6 @@
     </section>
   </main>
 
-  <!-- FOOTER INSTITUCIONAL (Arquitectura 4.2) -->
   <footer class="footer">
     <div class="container footer-grid">
       <div>
@@ -438,7 +407,6 @@
     </div>
   </footer>
 
-  <!-- MODAL GENÉRICO (Precierre, Constancia, Chat Original, Empresa No Registrada) -->
   <div class="modal-backdrop hidden" id="appModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">
       <div class="modal-header">
